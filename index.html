@@ -1,97 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Events Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>µLearn GEC Kozhikode – Official Website</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="container">
-    <div id="blob1" class="blob"></div>
-    <div id="blob2" class="blob"></div>
-    <div id="blob3" class="blob"></div>
-    <div id="blob4" class="blob"></div>
-    <div id="blob5" class="blob"></div>
-    <div id="blob6" class="blob"></div>
-    <div id="blob7" class="blob"></div>
-    <div id="blob8" class="blob"></div>
-  </div>
+  <nav>
+    <a class="nav-brand" href="#home">µLearn <span>GECK</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="https://mulearn.org" target="_blank">Join MuLearn</a>
+  </nav>
 
-  <main class="dashboard-wrapper">
-    <header class="dashboard-header">
-      <h1>Upcoming Campus Events</h1>
-      <p>Live event dashboard synchronized with the student database portal.</p>
-    </header>
+  <section id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <div class="stars" id="stars"></div>
 
-    <div class="events-grid" id="eventsContainer">
-      <p style="text-align: center; grid-column: 1/-1; color: rgba(255,255,255,0.4); font-size: 16px;">
-        Synchronizing with database matrix...
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Official Campus Chapter — GEC Kozhikode</div>
+      <h1 class="hero-title">
+        <span class="block">Where Students</span>
+        <span class="block italic">Learn, Lead &</span>
+        <span class="block">Innovate</span>
+      </h1>
+      <p class="hero-sub">
+        µLearn GEC Kozhikode — empowering the next generation of<br/>
+        engineers, builders, and changemakers.
       </p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#about">Explore</a>
+        <a class="btn-ghost" href="#contact">Get In Touch</a>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-layout">
+        <div class="about-text reveal">
+          <div class="section-eyebrow">Who We Are</div>
+          <h2 class="section-heading">Building a culture of <span class="accent">lifelong learning</span></h2>
+          <p>At the GEC Kozhikode chapter of the <strong>Mulearn Foundation</strong>, we empower students and foster a culture of continuous growth. Founded on the belief that education drives transformation, we connect students across disciplines to explore technology, entrepreneurship, and leadership.</p>
+          <p>Our chapter provides <strong>accessible skill development</strong>, innovative workshops, and a vibrant community for future leaders — all under one roof. Join us as we learn, grow, and shape a brighter future together.</p>
+        </div>
+        <div class="about-pillars reveal" style="transition-delay:0.15s">
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-title">Skill Development</div>
+            <div class="pillar-text">Workshops, bootcamps and hands-on sessions to sharpen real-world skills.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-title">Community</div>
+            <div class="pillar-text">A vibrant network of students, mentors and industry leaders driving each other forward.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🚀</div>
+            <div class="pillar-title">Innovation</div>
+            <div class="pillar-text">Hackathons, idea sprints and project showcases to turn bold ideas into reality.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🏆</div>
+            <div class="pillar-title">Recognition</div>
+            <div class="pillar-text">Earn Karma points and get recognized on the µLearn national leaderboard.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">What We Do</div>
+      <h2 class="section-heading reveal">Our <span class="accent">Events</span></h2>
+
+      <div class="slideshow-wrap reveal" style="transition-delay:0.1s">
+        <div class="slides-track" id="slidesTrack">
+          <p id="event-loading-msg" style="text-align: center; color: rgba(255,255,255,0.4); padding: 60px; width: 100%; font-family: 'Space Mono', monospace; font-size: 0.9rem;">
+            Synchronizing with µLearn database operations matrix...
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">Our Impact</div>
+      <h2 class="section-heading reveal">Numbers that <span class="accent">speak</span></h2>
+      <div class="achievements-layout">
+        <div>
+          <div class="stats-grid reveal" style="transition-delay:0.1s">
+            <div class="stat-cell">
+              <div class="stat-number" data-target="6" data-suffix="th">—</div>
+              <div class="stat-label">Position on µLearn<br/>Yearly Leaderboard 2025</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number" data-target="90" data-suffix="k+">—</div>
+              <div class="stat-label">Karma Points<br/>Earned by Members</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number" data-target="200" data-suffix="+">—</div>
+              <div class="stat-label">Active Members<br/>Across Disciplines</div>
+            </div>
+          </div>
+        </div>
+        <div class="highlights-list reveal" style="transition-delay:0.2s">
+          <div class="highlight-item">
+            <div class="highlight-num">01</div>
+            <div class="highlight-text"><strong>🏅 6th place on µLearn Yearly Leaderboard 2025</strong> — ranked among the top campus chapters nationally, reflecting consistent community engagement.</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">02</div>
+            <div class="highlight-text"><strong>⚡ 90,000+ Karma Points</strong> — collectively earned by our members, proving their dedication to continuous skill growth.</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">03</div>
+            <div class="highlight-text"><strong>🤖 Nourin — AI Interest Group Lead 2025</strong> at µLearn Foundation, representing GECK nationally and driving AI-focused initiatives.</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">04</div>
+            <div class="highlight-text"><strong>🏗️ Nidhi Ashok — Civil IG Lead 2025</strong> at µLearn Foundation, championing civil engineering innovation on a national stage.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">The People</div>
+      <h2 class="section-heading reveal">Core <span class="accent">Team 2026</span></h2>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="bindima.jpeg" alt="Dr. Bindima" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👩‍🏫</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Dr. Bindima</div>
+            <div class="team-role">Campus Advisor</div>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:0.1s">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="naem.jpeg" alt="Naeem Ahammed" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👨‍💻</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Naeem Ahammed</div>
+            <div class="team-role">Alumni Member</div>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:0.2s">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="neha.jpeg" alt="Neha T K" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👩‍💻</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Neha T K</div>
+            <div class="team-role">Mentor</div>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:0.3s">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="vimal.jpeg" alt="Vimal John M V" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👨‍🎓</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Vimal John M V</div>
+            <div class="team-role">Campus Lead</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">Reach Out</div>
+      <h2 class="section-heading reveal">Get in <span class="accent">Touch</span></h2>
+      <div class="contact-layout">
+        <div class="contact-items reveal" style="transition-delay:0.1s">
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:mulearngeck@gmail.com">mulearngeck@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Government Engineering College<br/>Kozhikode, Kerala</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <div class="contact-label">Web Administrator</div>
+              <div class="contact-value">Nandana K — <a href="mailto:nandanak@gmail.com">nandanak@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🔗</div>
+            <div>
+              <div class="contact-label">µLearn Platform</div>
+              <div class="contact-value"><a href="https://mulearn.org" target="_blank">mulearn.org</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="join-box reveal" style="transition-delay:0.2s">
+          <h3>Ready to <span>join us?</span></h3>
+          <p>Become part of a thriving community of learners, builders and leaders. Register on the µLearn platform, earn Karma, and grow with us at GEC Kozhikode.</p>
+          <a class="btn-primary" href="https://mulearn.org" target="_blank">Register on MuLearn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">µLearn GEC Kozhikode</div>
+    <div class="footer-copy">
+      © 2026 µLearn GECK — Official Campus Chapter<br/>
+      Web Administrator: Nandana K
+    </div>
+  </footer>
 
   <script>
-    // Converted to use your working Google Apps Script URL
-    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbz1YLQO2w8bwQ8GNweSL10hmGk7LfmsLa-3VW8U76nuwHiRft1mTZz8T8WTAPWBjPbb/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1YLQO2w8bwQ8GNweSL10hmGk7LfmsLa-3VW8U76nuwHiRft1mTZz8T8WTAPWBjPbb/exec';
+    const track = document.getElementById('slidesTrack');
 
-    const eventsContainer = document.getElementById('eventsContainer');
-
-    // Fetch live spreadsheet rows on page load
-    fetch(BACKEND_URL)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response connection issue.');
-        }
-        return response.json();
-      })
-      .then(events => {
-        eventsContainer.innerHTML = '';
-
-        if (events.length === 0) {
-          eventsContainer.innerHTML = `
-            <p style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.5);">
-              No campus events are currently listed. Check back later!
-            </p>`;
+    fetch(SCRIPT_URL)
+      .then(res => res.json())
+      .then(data => {
+        if(!data || data.length === 0) {
+          track.innerHTML = `<p style="text-align:center; color:rgba(255,255,255,0.5); width:100%; padding:40px;">No ongoing event campaigns found.</p>`;
           return;
         }
 
-        // Generate Glassmorphism Event Cards dynamically
-        events.forEach(event => {
-          const cleanBadgeClass = event.category ? event.category.toLowerCase().trim() : 'tech';
+        track.innerHTML = '';
+        const totalSlides = data.length;
+
+        data.forEach((event, index) => {
+          const slideNum = index + 1;
+          const padIndex = String(slideNum).padStart(2, '0');
+          const padTotal = String(totalSlides).padStart(2, '0');
           
-          // Encodes text so spaces and symbols safely travel through the URL link
+          let assetImg = 'web.jpeg';
+          const lowerName = event.name.toLowerCase();
+          if(lowerName.includes('git')) assetImg = 'git.jpeg';
+          else if(lowerName.includes('pulse')) assetImg = 'mupulse.jpeg';
+          else if(lowerName.includes('paday')) assetImg = 'padayottam.jpeg';
+          else if(lowerName.includes('up')) assetImg = 'upside.jpeg';
+          else if(lowerName.includes('india') || lowerName.includes('hack')) assetImg = 'india.jpeg';
+
           const encodedName = encodeURIComponent(event.name);
           const encodedCat = encodeURIComponent(event.category);
 
-          const cardHTML = `
-            <div class="event-card">
-              <div class="badge ${cleanBadgeClass}">${event.category}</div>
-              <div class="event-content">
-                <span class="event-date">${event.date}</span>
-                <h3>${event.name}</h3>
-                <p>${event.description}</p>
-                <div class="event-footer">
-                  <span class="event-price">${event.price}</span>
-                  <button class="register-btn" onclick="window.location.href='register.html?name=${encodedName}&cat=${encodedCat}'">
-                    Register Now
-                  </button>
+          const slideHTML = `
+            <div class="slide ${index === 0 ? 'active' : ''}" data-slide-idx="${index}">
+              <div class="slide-img-wrap">
+                <img class="slide-img" src="${assetImg}" alt="${event.name}">
+              </div>
+              <div class="slide-content">
+                <div class="slide-index">${padIndex} / ${padTotal}</div>
+                <div class="slide-cat">${event.category}</div>
+                <div class="slide-name">${event.name}</div>
+                <div class="slide-desc">
+                  ${event.description}
+                  <br><br>
+                  <span style="color: var(--lavender); font-family: 'Space Mono', monospace; font-size: 0.8rem; display: block; margin-bottom: 5px;">
+                    📅 Date: ${event.date} | 🪙 Cost: ${event.price}
+                  </span>
+                </div>
+                <div class="slide-controls">
+                  <button class="slide-btn global-prev-trigger" aria-label="Previous">&#8592;</button>
+                  <button class="slide-btn global-next-trigger" aria-label="Next">&#8594;</button>
+                  <div class="slide-dots"></div>
+                  <span class="slide-counter">${slideNum} / ${totalSlides}</span>
+                  <button class="register-btn" onclick="window.location.href='register.html?name=${encodedName}&cat=${encodedCat}'">Register</button>
                 </div>
               </div>
             </div>
           `;
-          
-          eventsContainer.innerHTML += cardHTML;
+          track.innerHTML += slideHTML;
         });
+
+        initCarouselEngine(totalSlides);
       })
-      .catch(error => {
-        console.error('System Data Error:', error);
-        eventsContainer.innerHTML = `
-          <p style="grid-column: 1/-1; text-align: center; color: #ff5252; font-weight: 600;">
-            Failed to sync event listings. Please check your network or Google Sheet configuration.
-          </p>`;
+      .catch(err => {
+        console.error("Fetch failure:", err);
+        track.innerHTML = `<p style="text-align:center; color:#ff5252; width:100%; padding:40px;">Failed to synchronize live event cards.</p>`;
       });
+
+    function initCarouselEngine(total) {
+      let currentIdx = 0;
+      
+      function updateSliderDOM(targetIdx) {
+        const slides = document.querySelectorAll('.slide');
+        if(slides.length === 0) return;
+        
+        slides[currentIdx].classList.remove('active');
+        currentIdx = (targetIdx + total) % total;
+        slides[currentIdx].classList.add('active');
+        
+        const dotContainers = document.querySelectorAll('.slide-dots');
+        dotContainers.forEach(container => {
+          container.innerHTML = '';
+          for(let i=0; i<total; i++) {
+            container.innerHTML += `<span class="dot ${i === currentIdx ? 'active' : ''}"></span>`;
+          }
+        });
+      }
+
+      document.addEventListener('click', function(e) {
+        if(e.target.classList.contains('global-next-trigger')) {
+          updateSliderDOM(currentIdx + 1);
+        }
+        if(e.target.classList.contains('global-prev-trigger')) {
+          updateSliderDOM(currentIdx - 1);
+        }
+      });
+
+      updateSliderDOM(0);
+    }
   </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
