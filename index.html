@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Events Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <div id="blob1" class="blob"></div>
+    <div id="blob2" class="blob"></div>
+    <div id="blob3" class="blob"></div>
+    <div id="blob4" class="blob"></div>
+    <div id="blob5" class="blob"></div>
+    <div id="blob6" class="blob"></div>
+    <div id="blob7" class="blob"></div>
+    <div id="blob8" class="blob"></div>
+  </div>
+
+  <main class="dashboard-wrapper">
+    <header class="dashboard-header">
+      <h1>Upcoming Campus Events</h1>
+      <p>Live event dashboard synchronized with the student database portal.</p>
+    </header>
+
+    <div class="events-grid" id="eventsContainer">
+      <p style="text-align: center; grid-column: 1/-1; color: rgba(255,255,255,0.4); font-size: 16px;">
+        Synchronizing with database matrix...
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // Converted to use your working Google Apps Script URL
+    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbz1YLQO2w8bwQ8GNweSL10hmGk7LfmsLa-3VW8U76nuwHiRft1mTZz8T8WTAPWBjPbb/exec';
+
+    const eventsContainer = document.getElementById('eventsContainer');
+
+    // Fetch live spreadsheet rows on page load
+    fetch(BACKEND_URL)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response connection issue.');
+        }
+        return response.json();
+      })
+      .then(events => {
+        eventsContainer.innerHTML = '';
+
+        if (events.length === 0) {
+          eventsContainer.innerHTML = `
+            <p style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.5);">
+              No campus events are currently listed. Check back later!
+            </p>`;
+          return;
+        }
+
+        // Generate Glassmorphism Event Cards dynamically
+        events.forEach(event => {
+          const cleanBadgeClass = event.category ? event.category.toLowerCase().trim() : 'tech';
+          
+          // Encodes text so spaces and symbols safely travel through the URL link
+          const encodedName = encodeURIComponent(event.name);
+          const encodedCat = encodeURIComponent(event.category);
+
+          const cardHTML = `
+            <div class="event-card">
+              <div class="badge ${cleanBadgeClass}">${event.category}</div>
+              <div class="event-content">
+                <span class="event-date">${event.date}</span>
+                <h3>${event.name}</h3>
+                <p>${event.description}</p>
+                <div class="event-footer">
+                  <span class="event-price">${event.price}</span>
+                  <button class="register-btn" onclick="window.location.href='register.html?name=${encodedName}&cat=${encodedCat}'">
+                    Register Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          
+          eventsContainer.innerHTML += cardHTML;
+        });
+      })
+      .catch(error => {
+        console.error('System Data Error:', error);
+        eventsContainer.innerHTML = `
+          <p style="grid-column: 1/-1; text-align: center; color: #ff5252; font-weight: 600;">
+            Failed to sync event listings. Please check your network or Google Sheet configuration.
+          </p>`;
+      });
+  </script>
+</body>
+</html>

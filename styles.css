@@ -1,0 +1,316 @@
+/* ============================= */
+/* GLOBAL RESET */
+/* ============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+  background: #0d0d0d;
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================= */
+/* SMART ALIGNMENT LOGIC */
+/* ============================= */
+/* Applies center alignment ONLY to the registration page body (which has no dashboard wrapper) */
+body:not(:has(.dashboard-wrapper)) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ============================= */
+/* BACKGROUND CONTAINER (BLOBS) */
+/* ============================= */
+.container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  animation: flow 25s ease-in-out infinite alternate;
+}
+
+/* BLOB COORDINATE MATRICES */
+#blob1 { width: 650px; height: 650px; top: -250px; left: 20%; background: #261431; }
+#blob2 { width: 500px; height: 500px; top: 40%; left: -180px; background: #000000; }
+#blob3 { width: 520px; height: 520px; top: 35%; right: -180px; background: #b06bff; }
+#blob4 { width: 700px; height: 700px; bottom: -350px; left: 50%; transform: translateX(-50%); background: #452074; }
+#blob5 { width: 450px; height: 450px; bottom: -150px; left: -150px; background: #1e293b; }
+#blob6 { width: 450px; height: 450px; bottom: -150px; right: -150px; background: #1e293b; }
+#blob7 { width: 300px; height: 300px; top: 10%; left: -50px; background: #261431; }
+#blob8 { width: 350px; height: 350px; bottom: 10%; right: -50px; background: #452074; }
+
+@keyframes flow {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(50px, -40px) scale(1.1); }
+  50%  { transform: translate(-40px, 60px) scale(1.15); }
+  75%  { transform: translate(40px, 30px) scale(1.05); }
+  100% { transform: translate(-30px, -30px) scale(1); }
+}
+
+/* ============================= */
+/* DASHBOARD LAYOUT & HEADERS */
+/* ============================= */
+.dashboard-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.dashboard-header h1 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff, #b06bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-header p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================= */
+/* RESPONSIVE EVENTS GRID */
+/* ============================= */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+/* ============================= */
+/* PREMIUM GLASSMORPHISM EVENT CARDS */
+/* ============================= */
+.event-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(176, 107, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(176, 107, 255, 0.15);
+}
+
+.event-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.event-date {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #b06bff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.event-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.event-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+/* CATEGORY BADGES */
+.badge {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.tech { background: rgba(176, 107, 255, 0.15); color: #b06bff; border: 1px solid rgba(176, 107, 255, 0.3); }
+.badge.design { background: rgba(0, 184, 212, 0.15); color: #00b8d4; border: 1px solid rgba(0, 184, 212, 0.3); }
+.badge.keynote { background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.3); }
+
+.event-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: 15px;
+}
+
+.event-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.register-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #b06bff, #452074);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(176, 107, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(176, 107, 255, 0.5);
+  filter: brightness(1.15);
+}
+
+/* ============================= */
+/* MODERN GLASSMORPHISM FORM */
+/* ============================= */
+.form-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+select option {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+input:focus, 
+select:focus {
+  outline: none;
+  border-color: #b06bff;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 12px rgba(176, 107, 255, 0.3);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #b06bff, #452074);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(176, 107, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(176, 107, 255, 0.6);
+  filter: brightness(1.1);
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+}

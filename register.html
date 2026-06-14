@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGISTER</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <div id="blob1" class="blob"></div>
+    <div id="blob2" class="blob"></div>
+    <div id="blob3" class="blob"></div>
+    <div id="blob4" class="blob"></div>
+    <div id="blob5" class="blob"></div>
+    <div id="blob6" class="blob"></div>
+    <div id="blob7" class="blob"></div>
+    <div id="blob8" class="blob"></div>
+  </div>
+
+  <div class="form-container">
+    <h2 id="form-title">Student Details Form</h2>
+    
+    <form id="studentRegisterForm">
+      <input type="hidden" id="eventName" name="eventName">
+      <input type="hidden" id="eventCategory" name="eventCategory">
+        
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="ENTER YOUR NAME" required>
+      </div>
+
+      <div class="form-group">
+        <label for="muid">MUID</label>
+        <input type="text" id="muid" name="muid" placeholder="ENTER YOUR MUID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="semester">Semester</label>
+        <select id="semester" name="semester" required>
+          <option value="" disabled selected>Select your semester</option>
+          <option value="S1">S1</option>
+          <option value="S2">S2</option>
+          <option value="S3">S3</option>
+          <option value="S4">S4</option>
+          <option value="S5">S5</option>
+          <option value="S6">S6</option>
+          <option value="S7">S7</option>
+          <option value="S8">S8</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select id="department" name="department" required>
+          <option value="" disabled selected>Select your department</option>
+          <option value="CSD">CSD</option>
+          <option value="EC">EC</option>
+          <option value="AE">AE</option>
+          <option value="CE">CE</option>
+          <option value="MECH">MECH</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+      </div>
+
+      <button type="submit" id="submitBtn">Submit Registration</button>
+    </form>
+    
+    <p id="successToast" style="color: #00e676; text-align: center; margin-top: 15px; display: none; font-weight: 600;">
+      Registration saved to database matrix!
+    </p>
+  </div>
+
+  <script>
+    // 1. EXTRACT EVENT PARAMETERS PUSHED FROM MAIN CARD DASHBOARD
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventName = urlParams.get('name') || "Event";
+    const eventCategory = urlParams.get('cat') || "Tech"; 
+
+    // Inject parameters into form text and hidden inputs
+    document.getElementById('form-title').innerText = `Register for ${eventName}`;
+    document.getElementById('eventName').value = eventName;
+    document.getElementById('eventCategory').value = eventCategory;
+
+    // 2. DISPATCH FORM OBJECT DIRECTLY TO GOOGLE SHEETS
+    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbz1YLQO2w8bwQ8GNweSL10hmGk7LfmsLa-3VW8U76nuwHiRft1mTZz8T8WTAPWBjPbb/exec'; 
+    
+    const form = document.getElementById('studentRegisterForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const toast = document.getElementById('successToast');
+
+    form.addEventListener('submit', event => {
+      event.preventDefault(); 
+      
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Processing submission...";
+
+      // Transmit all inputs via POST to the Google script route
+      fetch(BACKEND_URL, { method: 'POST', body: new FormData(form) })
+        .then(res => {
+          submitBtn.innerText = "Submitted Successfully!";
+          toast.style.display = "block";
+          form.reset(); 
+        })
+        .catch(err => {
+          console.error("Transmission fault logged:", err.message);
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Retry Submission";
+        });
+    });
+  </script>
+</body>
+</html>
