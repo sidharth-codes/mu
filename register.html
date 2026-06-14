@@ -6,9 +6,8 @@
   <title>µLearn GECK – Event Registration</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="register-body-wrapper">
+<body>
 
-  <!-- Fixed Navigation Bar for Visual Continuity -->
   <nav>
     <a class="nav-brand" href="index.html#home">µLearn <span>GECK</span></a>
     <ul class="nav-links">
@@ -22,77 +21,77 @@
     <a class="nav-cta" href="https://mulearn.org" target="_blank">Join MuLearn</a>
   </nav>
 
-  <!-- Glassmorphic Registration Form Wrapper -->
-  <div class="form-container">
-    <h2 id="form-title">Student Details Form</h2>
+  <div class="register-body-wrapper" style="margin-top: 80px; min-height: calc(100vh - 80px); width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px 20px;">
     
-    <form id="studentRegisterForm">
-      <!-- Hidden inputs populated dynamically from index parameters -->
-      <input type="hidden" id="eventName" name="eventName">
-      <input type="hidden" id="eventCategory" name="eventCategory">
-        
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="ENTER YOUR NAME" required>
-      </div>
+    <div class="form-container" style="background: rgba(26, 0, 48, 0.65); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+      <h2 id="form-title" style="margin-bottom: 25px;">Student Details Form</h2>
+      
+      <form id="studentRegisterForm">
+        <input type="hidden" id="eventName" name="eventName">
+        <input type="hidden" id="eventCategory" name="eventCategory">
+          
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="ENTER YOUR NAME" required>
+        </div>
 
-      <div class="form-group">
-        <label for="muid">MUID</label>
-        <input type="text" id="muid" name="muid" placeholder="ENTER YOUR MUID" required>
-      </div>
+        <div class="form-group">
+          <label for="muid">MUID</label>
+          <input type="text" id="muid" name="muid" placeholder="ENTER YOUR MUID" required>
+        </div>
 
-      <div class="form-group">
-        <label for="semester">Semester</label>
-        <select id="semester" name="semester" required>
-          <option value="" disabled selected>Select your semester</option>
-          <option value="S1">S1</option>
-          <option value="S2">S2</option>
-          <option value="S3">S3</option>
-          <option value="S4">S4</option>
-          <option value="S5">S5</option>
-          <option value="S6">S6</option>
-          <option value="S7">S7</option>
-          <option value="S8">S8</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <label for="semester">Semester</label>
+          <select id="semester" name="semester" required>
+            <option value="" disabled selected>Select your semester</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+            <option value="S4">S4</option>
+            <option value="S5">S5</option>
+            <option value="S6">S6</option>
+            <option value="S7">S7</option>
+            <option value="S8">S8</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label for="department">Department</label>
-        <select id="department" name="department" required>
-          <option value="" disabled selected>Select your department</option>
-          <option value="CSD">CSD</option>
-          <option value="EC">EC</option>
-          <option value="AE">AE</option>
-          <option value="CE">CE</option>
-          <option value="MECH">MECH</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <label for="department">Department</label>
+          <select id="department" name="department" required>
+            <option value="" disabled selected>Select your department</option>
+            <option value="CSD">CSD</option>
+            <option value="EC">EC</option>
+            <option value="AE">AE</option>
+            <option value="CE">CE</option>
+            <option value="MECH">MECH</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="name@example.com" required>
-      </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="name@example.com" required>
+        </div>
 
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
-      </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+        </div>
 
-      <button type="submit" id="submitBtn">Submit Registration</button>
-    </form>
-    
-    <p id="successToast" style="color: #00e676; text-align: center; margin-top: 15px; display: none; font-weight: 600; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
-      Registration saved to database matrix!
-    </p>
+        <button type="submit" id="submitBtn">Submit Registration</button>
+      </form>
+      
+      <p id="successToast" style="color: #00e676; text-align: center; margin-top: 15px; display: none; font-weight: 600; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+        Registration saved to database matrix!
+      </p>
+    </div>
+
   </div>
 
   <script>
-    // Extract parameters passed from carousel click events
     const urlParams = new URLSearchParams(window.location.search);
     const eventName = urlParams.get('name') || "Event";
     const eventCategory = urlParams.get('cat') || "Tech"; 
 
-    // Update dynamic text metrics safely
     document.getElementById('form-title').innerText = `Register for ${decodeURIComponent(eventName)}`;
     document.getElementById('eventName').value = decodeURIComponent(eventName);
     document.getElementById('eventCategory').value = decodeURIComponent(eventCategory);
@@ -110,25 +109,22 @@
       submitBtn.innerText = "Processing submission...";
       submitBtn.style.opacity = "0.6";
 
-      // Apps Script often prefers standard URL encoding over multi-part form payloads
       const encodedPayload = new URLSearchParams(new FormData(form));
 
       fetch(BACKEND_URL, { 
         method: 'POST', 
-        mode: 'no-cors', // Added to bypass CORS pre-flight handshake limits on standard Apps Script URLs
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodedPayload 
       })
       .then(() => {
         submitBtn.innerText = "Submitted Successfully!";
         toast.style.display = "block";
+        form.reset(); 
         
-        // Gracefully clean inputs without destroying metadata state variables
-        form.reset();
         document.getElementById('eventName').value = decodeURIComponent(eventName);
         document.getElementById('eventCategory').value = decodeURIComponent(eventCategory);
 
-        // Auto-return tracking context smoothly after application load
         setTimeout(() => {
           window.location.href = "index.html#events";
         }, 2000);
@@ -143,3 +139,4 @@
   </script>
 </body>
 </html>
+
